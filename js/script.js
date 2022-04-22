@@ -8,31 +8,38 @@
 
 containerContent();
 
+/**
+ * Description: Questa funzione si occuperà del generare numeri da 1 a 100 e di conseguenza aggiungere al DOM 100 div 'grid-item' all'interno del di 'grid-container'
+ * @returns {any}: DOM interface and interaction of the function. Nuove 100 grid-item e cambio colore al click
+ */
+
 function containerContent() {
-    // per ogni numero creo una grid item
+    // 1.CREARE GRID ITEMS A APPEND A GRID CONTAINER
+    // 1.1 Creare una variabile e associarla a grid-container
     const gridContainer = document.querySelector(".grid-container");
 
+    // 1.2 Creare un ciclo for per generare numeri da 1 a 100
     for (let i = 1; i <= 100; i++) {
-        
+    // 1.3 creare una nuova costante e associarla alla funzione generateGridItem => Questa funzione crea gli elementi che saranno il contenuto del DOM
         const domElement = generateGridItem(i);
 
-        
-        //append
+    // 1.4 event listener per il cambio colore
+        domElement.addEventListener("click", function() {
+        this.classList.add('active')})
+
+    // 1.5 append element to container
         gridContainer.append(domElement);
-        //inserisci in html elementi con template
-        // gridContainer.innerHTML += `<div class="grid-item">${number}</div>`;
-
-        //associa una variabile al dom e aggiungi con eventlistener una classe
-
-        // const gridItem = document.querySelector(".grid-item");
-        // gridItem.addEventListener("click",
-        // function() {
-        //     this.classList.add('active');
-        // })
+       
     }    
+    // 1.6 return the result
     return gridContainer;
 }
 
+/**
+ * Description
+ * @param {any} number numero da 1 a 100 generato dal ciclio for nella function 'containerContent'
+ * @returns {any}: DOM functions= crea elementi div e aggiunge classi all'interno di esse
+ */
 function generateGridItem(number) {
     //crea una var associata a un div creato
     const newGridItem = document.createElement("div");
