@@ -2,6 +2,24 @@
 // Generare una griglia di gioco quadrata in cui ogni cella contiene un numero compreso tra 1 e 100.
 // Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 
+/* BONUS Aggiungere la possibilità di scegliere un livello di difficoltà in base al quale viene generata una griglia di uno dei seguenti range:
+con difficoltà 1 => tra 1 e 100
+con difficoltà 2 => tra 1 e 81
+con difficoltà 3 => tra 1 e 49*/
+
+
+let sizeGrid
+const userChoice = prompt('scegli la difficoltà: easy, medium, hero');
+
+if (userChoice === "easy") {
+   sizeGrid = 100;
+} else if (userChoice === "medium") {
+    sizeGrid = 81;
+} else if (userChoice === "hero"){
+    sizeGrid = 49;
+} else {
+    prompt('scegli una difficolà: easy, medium, hero');
+}
 
 //1.1 CREARE UN FOR DA 1 A 100
 //1.2 AGGIUNGERE 100 DIV A CONTAINER
@@ -19,7 +37,7 @@ function containerContent() {
     const gridContainer = document.querySelector(".grid-container");
 
     // 1.2 Creare un ciclo for per generare numeri da 1 a 100
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= sizeGrid; i++) {
     // 1.3 creare una nuova costante e associarla alla funzione generateGridItem => Questa funzione crea gli elementi che saranno il contenuto del DOM
         const domElement = generateGridItem(i);
 
